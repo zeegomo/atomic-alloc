@@ -1,9 +1,9 @@
 #![no_std]
-#[allow(hidden_glob_reexports)]
-extern crate alloc;
-pub use alloc::*;
 
-#[cfg(not(target_has_atomic))]
+extern crate alloc as __allocc;
+pub use __allocc::*;
+
+#[cfg(not(target_has_atomic = "ptr"))]
 pub mod sync {
     pub use portable_atomic_util::*;
 }
